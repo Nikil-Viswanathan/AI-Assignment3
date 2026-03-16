@@ -1,20 +1,38 @@
 # AI-Assignment3
 
 # Dijkstra’s Algorithm
-This program implements Dijkstra’s Algorithm in Python to compute the shortest road distances between Indian cities. The cities are represented as nodes in a weighted graph, and the road distances between them are the edge weights.
+This Python program implements Dijkstra’s Algorithm to compute the shortest road distances between Indian cities. The road network is represented as a weighted undirected graph, where cities are nodes and road distances are edge weights.
+The code builds the graph from a list of city connections, then runs Dijkstra’s algorithm using a priority queue (heapq) to compute the minimum distance from a source city. It also reconstructs the actual path using a prev dictionary.
+The program outputs:
 
-The program builds the graph from a list of city connections, then calculates the minimum distance from a source city to all other cities using a priority queue (heapq). It also reconstructs and prints the actual shortest path between cities.
-
-The code demonstrates:
-Finding shortest paths from Delhi to all other cities
-Finding shortest paths between specific city pairs (e.g., Mumbai -> Kolkata).
+The shortest distance from Delhi to all other cities
+The shortest route between specific city pairs
+The sequence of cities forming each path
 
 # UGV Static
-This program simulates UGV (Unmanned Ground Vehicle) navigation in a grid with static obstacles using the A* search algorithm. A random grid environment is generated with different obstacle densities (Low, Medium, High), and the UGV must find the shortest path from the start position to the goal.
+This program simulates UGV navigation on a 70×70 grid with static obstacles, using the A* pathfinding algorithm. Obstacles are randomly generated based on different density levels (Low, Medium, High).
 
-The A* algorithm uses a heuristic distance function to efficiently search for the optimal path while avoiding obstacles. The simulation reports performance metrics such as path length, nodes expanded, and execution time, and displays a grid visualization showing the start, goal, obstacles, and computed path.
+The algorithm uses a heuristic distance function and a priority queue to efficiently search for the shortest path from the start cell to the goal cell while avoiding obstacles.
+
+The program outputs:
+
+Whether a valid path was found
+The total path length
+The number of nodes expanded during search
+The execution time
+A grid visualization showing start (S), goal (G), obstacles (█), and the path (·)
+It also prints a summary comparing performance across obstacle densities.
 
 # UGV Dynamic
-This program simulates an Unmanned Ground Vehicle (UGV) navigating a grid environment using the D* Lite path planning algorithm. The grid contains randomly generated hidden obstacles that the UGV discovers only when they enter its sensor range.
+This program simulates a UGV navigating a grid with dynamically discovered obstacles using the D* Lite algorithm, which supports efficient replanning when the environment changes.
+The environment contains hidden obstacles that the UGV cannot initially see. As the vehicle moves, it detects obstacles within its sensor range, updates the map, and recomputes the path only where necessary.
+The code implements the D* Lite planner, which maintains g and rhs values for nodes and uses a priority queue to update affected nodes when new obstacles are discovered.
+The program outputs:
 
-The algorithm continuously replans the path dynamically whenever new obstacles are detected, allowing the UGV to adapt and still attempt to reach the goal. The simulation tracks metrics such as distance traveled, number of replanning events, nodes updated, and execution time, and also prints a grid visualization of the path and obstacles.
+Whether the UGV successfully reached the goal
+The total distance traveled
+The number of replanning events
+The number of nodes updated
+The execution time
+A grid visualization showing known obstacles, hidden obstacles, and the path taken
+The simulation runs multiple times with different random obstacle layouts to demonstrate how the algorithm adapts to dynamic environments.
